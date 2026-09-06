@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api import devices
+from app.api import devices, telemetry
 from app.database.connection import Base,engine
 from app.database.models import Device
 
@@ -15,4 +15,9 @@ def root():
 app.include_router(
     devices.router,
     prefix= "/api/devices"
+)
+
+app.include_router(
+    telemetry.router,
+    prefix = "/api/telemetry"
 )

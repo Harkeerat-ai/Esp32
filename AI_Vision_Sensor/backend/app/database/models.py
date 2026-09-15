@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from datetime import datetime
 
 from app.database.connection import Base
@@ -14,7 +14,7 @@ class Telemetry(Base):
     __tablename__ = "telemetry"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    device_id = Column(String, nullable = False)
+    device_id = Column(String, ForeignKey("devices.device_id"), nullable = False)
     uptime = Column(Integer, nullable= False)
     free_heap = Column(Integer, nullable= False)
     wifi_rssi = Column(Integer, nullable= False)

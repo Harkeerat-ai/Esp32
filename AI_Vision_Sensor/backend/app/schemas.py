@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class DeviceRegistration(BaseModel):
@@ -19,3 +20,11 @@ class TelemetryCreate(BaseModel):
     uptime: int
     free_heap: int
     wifi_rssi: int
+
+class TelemetryResponse(BaseModel):
+    id: int
+    device_id: str
+    uptime: int
+    free_heap: int
+    wifi_rssi: int
+    timestamp: datetime
